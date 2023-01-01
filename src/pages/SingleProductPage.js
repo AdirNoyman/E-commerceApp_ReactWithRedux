@@ -45,8 +45,6 @@ const SingleProductPage = () => {
 		return <Error />;
 	}
 
-	console.log(product);
-
 	const {
 		name,
 		price,
@@ -65,8 +63,8 @@ const SingleProductPage = () => {
 				<Link to='/products' className='btn'>
 					back to products
 				</Link>
-				<div className='products-center'>
-					<ProductImages />
+				<div className='product-center'>
+					<ProductImages images={images} />
 					<section className='content'>
 						<h2>{name}</h2>
 						<Stars />
