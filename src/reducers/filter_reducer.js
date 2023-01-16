@@ -29,6 +29,12 @@ const filter_reducer = (state, action) => {
 			grid_view: false,
 		};
 	}
+	if (action.type === UPDATE_SORT) {
+		return {
+			...state,
+			sort: action.payload,
+		};
+	}
 	// If there isn't any action that fits to the incoming action type => throw an error
 	throw new Error(`No Matching "${action.type}" - action type`);
 };
