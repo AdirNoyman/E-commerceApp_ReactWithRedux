@@ -35,6 +35,39 @@ const filter_reducer = (state, action) => {
 			sort: action.payload,
 		};
 	}
+
+	if (action.type === SORT_PRODUCTS) {
+		const { sort, filtered_products } = state;
+		let tempProducts = [...filtered_products];
+		if (sort === 'price-lowest') {
+			console.log('price-lowest');
+			tempProducts = tempProducts.sort((a, b) => {
+				return a.price - b.price;
+			});
+		}
+		if (sort === 'price-highest') {
+			console.log('price-highest');
+			tempProducts = tempProducts.sort((a, b) => {
+				return (a.price - b.price) * -1;
+			});
+		}
+		if (sort === 'name-a') {
+			console.log('name-a');
+			tempProducts = tempProducts.sort((a, b) => {
+				return a.name.localeCompare(b.name);
+			});
+		}
+		if (sort === 'name-z') {
+			console.log('name-z');
+			tempProducts = tempProducts.sort((a, b) => {
+				return b.name.localeCompare(a.name);
+			});
+		}
+		return {
+			...state,
+			filtered_products: tempProducts,
+		};
+	}
 	// If there isn't any action that fits to the incoming action type => throw an error
 	throw new Error(`No Matching "${action.type}" - action type`);
 };
