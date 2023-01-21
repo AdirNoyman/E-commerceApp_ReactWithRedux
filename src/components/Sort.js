@@ -16,13 +16,13 @@ const Sort = () => {
 			<div className='btn-container'>
 				<button
 					type='button'
-					className={grid_view && 'active'}
+					className={grid_view ? 'active' : ''}
 					onClick={setGridView}>
 					<BsFillGridFill />
 				</button>
 				<button
 					type='button'
-					className={!grid_view && 'active'}
+					className={!grid_view ? 'active' : ''}
 					onClick={setListView}>
 					<BsList />
 				</button>
