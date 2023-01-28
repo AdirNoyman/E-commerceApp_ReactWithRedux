@@ -65,6 +65,14 @@ export const FilterProvider = ({ children }) => {
 	const updateFilters = e => {
 		let name = e.target.name;
 		let value = e.target.value;
+		// Check if we are clicking on a button category. In such case, we need to grab the text from the button text content and not the target value
+		if (name === 'category') {
+			value = e.target.textContent;
+		}
+		// Check if we are clicking on a button color. In such case, we need to grab the text from the button dataset (data-color attribute) and not the target value
+		if (name === 'color') {
+			value = e.target.dataset.color;
+		}
 		dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
 	};
 
