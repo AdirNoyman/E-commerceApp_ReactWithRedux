@@ -73,11 +73,21 @@ export const FilterProvider = ({ children }) => {
 		if (name === 'color') {
 			value = e.target.dataset.color;
 		}
+		// Beacuse the range ui widget returns a string, we have to make sure its converted to number
+		if (name === 'price') {
+			value = Number(value);
+		}
+
+		if (name === 'shipping') {
+			value = e.target.checked;
+		}
 		dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
 	};
 
 	// Reset filters / clear filters
-	const clearFilters = e => {};
+	const clearFilters = () => {
+		dispatch({ type: CLEAR_FILTERS });
+	};
 
 	return (
 		// 'state' contains 'initialState'
