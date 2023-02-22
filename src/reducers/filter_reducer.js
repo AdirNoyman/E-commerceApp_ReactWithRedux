@@ -80,9 +80,21 @@ const filter_reducer = (state, action) => {
 		};
 	}
 	if (action.type === FILTER_PRODUCTS) {
-		console.log('Filtering products 🤓');
+		// Get all the products before applying filters
+		const { all_products } = state;
+		// Get the filters parameters we want to apply on all_products
+		const { text, category, company, color, price, shipping } =
+			state.filters;
+		let tempProducts = [...all_products];
+		// Filtering the products /////////////////////////////////////////////
+		if (text) {
+			tempProducts = tempProducts.filter(product =>
+				product.name.toLowerCase().startsWith(text.toLowerCase())
+			);
+		}
 		return {
 			...state,
+			filtered_products: tempProducts,
 		};
 	}
 
