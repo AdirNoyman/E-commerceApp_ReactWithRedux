@@ -28,8 +28,22 @@ export const CartProvider = ({ children }) => {
 		});
 	};
 
+	// Remove item from cart
+	const removeItemFromCart = () => {};
+	// Toggle amount
+	const toggleAmount = () => {};
+	// clear cart
+	const clearCart = () => {};
+
 	return (
-		<CartContext.Provider value={{ ...state, addToCart }}>
+		<CartContext.Provider
+			value={{
+				...state,
+				addToCart,
+				removeItemFromCart,
+				toggleAmount,
+				clearCart,
+			}}>
 			{children}
 		</CartContext.Provider>
 	);
